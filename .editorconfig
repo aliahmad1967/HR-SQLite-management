@@ -1,0 +1,42 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = crlf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{cs,csproj,sln}]
+indent_style = space
+indent_size = 4
+tab_width = 4
+charset = utf-8
+end_of_line = crlf
+insert_final_newline = true
+csharp_new_line_before_members = true
+dotnet_sort_system_directives_first = true
+
+# Naming conventions
+dotnet_naming_rule.private_fields_should_start_with_underscore.severity = suggestion
+dotnet_naming_rule.private_fields_should_start_with_underscore.symbols = private_fields
+dotnet_naming_rule.private_fields_should_start_with_underscore.style = underscore_prefix
+
+dotnet_naming_symbols.private_fields.applicable_kinds = field
+dotnet_naming_symbols.private_fields.applicable_accessibilities = private
+dotnet_naming_symbols.private_fields.required_modifiers = readonly
+
+dotnet_naming_style.underscore_prefix.required_prefix = _
+
+# File header
+file_header_template = "// Copyright (c) COMPANY. All rights reserved."
+
+# C# format
+csharp_style_var_elsewhere = false:suggestion
+csharp_new_line_before_open_brace = all
+
+[*.xaml]
+indent_style = space
+indent_size = 2
+
+
+# This is a complete .editorconfig for the repository. Adjust as needed.

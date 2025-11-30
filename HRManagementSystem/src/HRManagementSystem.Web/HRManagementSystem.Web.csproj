@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>HRManagementSystem.Web</RootNamespace>
+    <AssemblyName>HRManagementSystem.Web</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Electron.NET -->
+    <PackageReference Include="ElectronNET.API" Version="23.6.2" />
+    
+    <!-- Blazor -->
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="10.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HRManagementSystem.Core\HRManagementSystem.Core.csproj" />
+    <ProjectReference Include="..\HRManagementSystem.Data\HRManagementSystem.Data.csproj" />
+    <ProjectReference Include="..\HRManagementSystem.Services\HRManagementSystem.Services.csproj" />
+  </ItemGroup>
+
+</Project>
+

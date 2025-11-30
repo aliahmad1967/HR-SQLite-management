@@ -1,0 +1,170 @@
+<!-- =====================================================
+     نظام إدارة الموارد البشرية - HR Management System
+     MainWindow.xaml - النافذة الرئيسية
+     ===================================================== -->
+<Window x:Class="HRManagementSystem.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:views="clr-namespace:HRManagementSystem.Views"
+        Title="نظام إدارة الموارد البشرية"
+        Height="768" Width="1280"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        FlowDirection="RightToLeft"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- القائمة الجانبية -->
+        <Border Grid.Column="0" Background="{StaticResource PrimaryDarkBrush}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- الشعار -->
+                <StackPanel Grid.Row="0" Margin="16,24">
+                    <materialDesign:PackIcon Kind="AccountGroup" 
+                                             Width="48" Height="48"
+                                             Foreground="White"
+                                             HorizontalAlignment="Center"/>
+                    <TextBlock Text="نظام الموارد البشرية"
+                               Foreground="White"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"
+                               Margin="0,8,0,0"/>
+                </StackPanel>
+
+                <!-- معلومات المستخدم -->
+                <Border Grid.Row="1" Background="#1565C0" Padding="16" Margin="8,0">
+                    <StackPanel>
+                        <TextBlock Text="{Binding CurrentUserName}"
+                                   Foreground="White"
+                                   FontSize="14"
+                                   FontWeight="SemiBold"/>
+                        <TextBlock Text="{Binding CurrentUserRole}"
+                                   Foreground="#B3E5FC"
+                                   FontSize="12"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- قائمة التنقل -->
+                <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="8,16">
+                        <!-- لوحة التحكم -->
+                        <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                Command="{Binding NavigateToDashboardCommand}"
+                                HorizontalContentAlignment="Right"
+                                Foreground="White"
+                                Height="48">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="لوحة التحكم" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                <materialDesign:PackIcon Kind="ViewDashboard" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+
+                        <!-- الموظفين -->
+                        <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                Command="{Binding NavigateToEmployeesCommand}"
+                                HorizontalContentAlignment="Right"
+                                Foreground="White"
+                                Height="48">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="الموظفين" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                <materialDesign:PackIcon Kind="AccountMultiple" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+
+                        <!-- الحضور والانصراف -->
+                        <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                Command="{Binding NavigateToAttendanceCommand}"
+                                HorizontalContentAlignment="Right"
+                                Foreground="White"
+                                Height="48">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="الحضور والانصراف" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                <materialDesign:PackIcon Kind="ClockCheckOutline" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+
+                        <!-- الإجازات -->
+                        <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                Command="{Binding NavigateToLeavesCommand}"
+                                HorizontalContentAlignment="Right"
+                                Foreground="White"
+                                Height="48">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="الإجازات" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                <materialDesign:PackIcon Kind="CalendarRemove" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+
+                        <!-- الرواتب -->
+                        <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                Command="{Binding NavigateToPayrollCommand}"
+                                HorizontalContentAlignment="Right"
+                                Foreground="White"
+                                Height="48">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="الرواتب" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                <materialDesign:PackIcon Kind="CashMultiple" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+
+                        <!-- الأقسام -->
+                        <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                Command="{Binding NavigateToDepartmentsCommand}"
+                                HorizontalContentAlignment="Right"
+                                Foreground="White"
+                                Height="48">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="الأقسام" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                <materialDesign:PackIcon Kind="OfficeBuildingOutline" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+
+                        <!-- الإعدادات -->
+                        <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                Command="{Binding NavigateToSettingsCommand}"
+                                HorizontalContentAlignment="Right"
+                                Foreground="White"
+                                Height="48">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="الإعدادات" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                <materialDesign:PackIcon Kind="Cog" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </ScrollViewer>
+
+                <!-- تسجيل الخروج -->
+                <Button Grid.Row="3"
+                        Style="{StaticResource MaterialDesignFlatButton}"
+                        Command="{Binding LogoutCommand}"
+                        HorizontalContentAlignment="Right"
+                        Foreground="#FFCDD2"
+                        Height="48"
+                        Margin="8,0,8,16">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="تسجيل الخروج" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                        <materialDesign:PackIcon Kind="Logout" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </Border>
+
+        <!-- المحتوى الرئيسي -->
+        <ContentControl Grid.Column="1" Content="{Binding CurrentViewModel}" Margin="16"/>
+    </Grid>
+</Window>
+

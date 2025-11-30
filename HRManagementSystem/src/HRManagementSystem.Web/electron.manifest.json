@@ -1,0 +1,55 @@
+{
+  "executable": "HRManagementSystem.Web",
+  "splashscreen": {
+    "imageFile": ""
+  },
+  "name": "hr-management-system",
+  "author": "HR Management System",
+  "singleInstance": true,
+  "environment": "Production",
+  "build": {
+    "appId": "com.hr.management.system",
+    "productName": "HR Management System",
+    "copyright": "Copyright 2024",
+    "buildVersion": "1.0.0",
+    "compression": "maximum",
+    "directories": {
+      "output": "../../../dist"
+    },
+    "extraResources": [
+      {
+        "from": "./Data",
+        "to": "Data",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "files": [
+      "**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "wwwroot/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "wwwroot/icon.ico",
+      "uninstallerIcon": "wwwroot/icon.ico",
+      "installerHeaderIcon": "wwwroot/icon.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "HR Management System"
+    }
+  }
+}
+

@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>HRManagementSystem.Services</RootNamespace>
+    <AssemblyName>HRManagementSystem.Services</AssemblyName>
+    <Authors>HR Management Team</Authors>
+    <Description>Business services for HR Management System</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
+    <PackageReference Include="PdfSharpCore" Version="1.3.62" />
+    <PackageReference Include="Serilog" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HRManagementSystem.Core\HRManagementSystem.Core.csproj" />
+    <ProjectReference Include="..\HRManagementSystem.Data\HRManagementSystem.Data.csproj" />
+  </ItemGroup>
+
+</Project>
+

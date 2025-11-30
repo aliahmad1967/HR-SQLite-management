@@ -1,0 +1,64 @@
+# Build results
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]uild/
+out/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.csproj.user
+
+# Published files
+publish/
+dist/
+
+# NuGet
+*.nupkg
+.nuget/
+packages/
+
+# SQLite Database
+*.db
+*.db-shm
+*.db-wal
+
+# Logs
+logs/
+*.log
+
+# User settings
+*.user.config
+
+# Temp files
+temp_hash/
+*.tmp
+*.temp
+~$*
+
+# IDE
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Backup files
+Backups/
+*.bak
+
+# Images folder (user uploaded)
+Data/Images/
+

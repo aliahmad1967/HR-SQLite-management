@@ -1,0 +1,62 @@
+HR Management System - Installation Information
+================================================
+
+Thank you for installing HR Management System!
+
+IMPORTANT INFORMATION:
+----------------------
+
+1. Default Login Credentials:
+   Username: admin
+   Password: admin123
+   
+   * Please change the password after first login!
+
+2. System Requirements:
+   - Windows 10/11 (64-bit)
+   - 4GB RAM minimum
+   - 500MB free disk space
+   - Screen resolution: 1280x768 or higher
+
+3. Data Location:
+   - Database: [Install Dir]\Data\hr_database.db
+   - Logs: [Install Dir]\logs\
+   - Backups: [Install Dir]\Backups\
+
+4. Features:
+   - Employee Management (Add, Edit, Delete employees)
+   - Attendance Tracking (Check-in/Check-out)
+   - Leave Management (Request and approve leaves)
+   - Payroll Processing (Salary calculations)
+   - Department Management
+   - Reports and Dashboard
+
+5. Support:
+   For support, please contact your IT administrator.
+
+================================================
+نظام إدارة الموارد البشرية - معلومات التثبيت
+================================================
+
+شكراً لتثبيت نظام إدارة الموارد البشرية!
+
+معلومات هامة:
+--------------
+
+1. بيانات الدخول الافتراضية:
+   اسم المستخدم: admin
+   كلمة المرور: admin123
+   
+   * يرجى تغيير كلمة المرور بعد تسجيل الدخول الأول!
+
+2. متطلبات النظام:
+   - ويندوز 10/11 (64 بت)
+   - 4 جيجابايت ذاكرة عشوائية كحد أدنى
+   - 500 ميجابايت مساحة حرة
+   - دقة الشاشة: 1280×768 أو أعلى
+
+3. مواقع البيانات:
+   - قاعدة البيانات: [مجلد التثبيت]\Data\hr_database.db
+   - السجلات: [مجلد التثبيت]\logs\
+   - النسخ الاحتياطية: [مجلد التثبيت]\Backups\
+
