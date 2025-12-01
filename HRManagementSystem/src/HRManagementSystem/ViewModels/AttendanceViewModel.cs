@@ -165,20 +165,10 @@ public partial class AttendanceViewModel : BaseViewModel
     {
         EditingAttendance = new Attendance
         {
-            Date = DateTime.Today,
-            CheckInTime = DateTime.Now
+            AttendanceDate = DateTime.Today,
+            CheckInTime = DateTime.Now.TimeOfDay
         };
         IsEditing = true;
-    }
-
-    /// <summary>
-    /// تحديث البيانات
-    /// Refresh data
-    /// </summary>
-    [RelayCommand]
-    private async Task RefreshAsync()
-    {
-        await LoadAsync();
     }
 
     /// <summary>

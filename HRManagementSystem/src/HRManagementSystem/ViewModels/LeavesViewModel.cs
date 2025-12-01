@@ -195,16 +195,6 @@ public partial class LeavesViewModel : BaseViewModel
     }
 
     /// <summary>
-    /// تحديث البيانات
-    /// Refresh data
-    /// </summary>
-    [RelayCommand]
-    private async Task RefreshAsync()
-    {
-        await LoadAsync();
-    }
-
-    /// <summary>
     /// طلب إجازة جديدة
     /// Request new leave
     /// </summary>
