@@ -12,14 +12,50 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- العنوان -->
-        <TextBlock Grid.Row="0" 
-                   Text="الحضور والانصراف"
-                   Style="{StaticResource HeaderTextStyle}"
-                   Margin="0,0,0,16"/>
+        <!-- العنوان وأزرار الإجراءات -->
+        <Grid Grid.Row="0" Margin="0,0,0,16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="الحضور والانصراف"
+                       Style="{StaticResource HeaderTextStyle}"/>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <Button Content="إضافة سجل جديد"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Command="{Binding AddAttendanceCommand}"
+                        Margin="0,0,8,0">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Plus" VerticalAlignment="Center"/>
+                                <TextBlock Text="إضافة سجل جديد" Margin="8,0,0,0"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                
+                <Button Content="تحديث"
+                        Style="{StaticResource MaterialDesignOutlinedButton}"
+                        Command="{Binding RefreshCommand}"
+                        ToolTip="تحديث البيانات">
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Refresh" VerticalAlignment="Center"/>
+                                <TextBlock Text="تحديث" Margin="8,0,0,0"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+            </StackPanel>
+        </Grid>
 
         <!-- شريط الفلترة -->
         <Border Grid.Row="1" Style="{StaticResource CardStyle}" Padding="16" Margin="0,0,0,16">
@@ -105,7 +141,7 @@
         </Border>
 
         <!-- مؤشر التحميل -->
-        <ProgressBar Grid.Row="2"
+        <ProgressBar Grid.Row="3"
                      IsIndeterminate="True"
                      Style="{StaticResource MaterialDesignCircularProgressBar}"
                      HorizontalAlignment="Center"

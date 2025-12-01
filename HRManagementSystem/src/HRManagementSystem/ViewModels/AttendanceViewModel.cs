@@ -74,6 +74,20 @@ public partial class AttendanceViewModel : BaseViewModel
     [ObservableProperty]
     private DateTime _endDate = DateTime.Today;
 
+    /// <summary>
+    /// سجل الحضور قيد التحرير
+    /// Attendance being edited
+    /// </summary>
+    [ObservableProperty]
+    private Attendance? _editingAttendance;
+
+    /// <summary>
+    /// هل في وضع التحرير؟
+    /// Is in edit mode?
+    /// </summary>
+    [ObservableProperty]
+    private bool _isEditing;
+
     public AttendanceViewModel(
         IAttendanceService attendanceService,
         IEmployeeService employeeService,
@@ -143,6 +157,31 @@ public partial class AttendanceViewModel : BaseViewModel
     }
 
     /// <summary>
+    /// إضافة سجل حضور جديد
+    /// Add new attendance record
+    /// </summary>
+    [RelayCommand]
+    private void AddAttendance()
+    {
+        EditingAttendance = new Attendance
+        {
+            Date = DateTime.Today,
+            CheckInTime = DateTime.Now
+        };
+        IsEditing = true;
+    }
+
+    /// <summary>
+    /// تحديث البيانات
+    /// Refresh data
+    /// </summary>
+    [RelayCommand]
+    private async Task RefreshAsync()
+    {
+        await LoadAsync();
+    }
+
+    /// <summary>
     /// تسجيل الحضور
     /// Check in
     /// </summary>
@@ -152,7 +191,7 @@ public partial class AttendanceViewModel : BaseViewModel
         await ExecuteAsync(async () =>
         {
             await _attendanceService.CheckInAsync(employeeId);
-            await LoadAttendanceAsync();
+            await LoadAttendanceAsync(); // Auto-refresh
         }, "تم تسجيل الحضور بنجاح");
     }
 
@@ -166,7 +205,7 @@ public partial class AttendanceViewModel : BaseViewModel
         await ExecuteAsync(async () =>
         {
             await _attendanceService.CheckOutAsync(employeeId);
-            await LoadAttendanceAsync();
+            await LoadAttendanceAsync(); // Auto-refresh
         }, "تم تسجيل الانصراف بنجاح");
     }
 

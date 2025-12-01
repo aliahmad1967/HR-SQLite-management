@@ -195,6 +195,16 @@ public partial class LeavesViewModel : BaseViewModel
     }
 
     /// <summary>
+    /// تحديث البيانات
+    /// Refresh data
+    /// </summary>
+    [RelayCommand]
+    private async Task RefreshAsync()
+    {
+        await LoadAsync();
+    }
+
+    /// <summary>
     /// طلب إجازة جديدة
     /// Request new leave
     /// </summary>
@@ -203,13 +213,32 @@ public partial class LeavesViewModel : BaseViewModel
     {
         if (EditingLeave == null) return;
 
+        // Validation
+        if (EditingLeave.EmployeeId == 0)
+        {
+            ShowError("يرجى اختيار موظف");
+            return;
+        }
+
+        if (EditingLeave.LeaveTypeId == 0)
+        {
+            ShowError("يرجى اختيار نوع الإجازة");
+            return;
+        }
+
+        if (EditingLeave.EndDate < EditingLeave.StartDate)
+        {
+            ShowError("تاريخ النهاية يجب أن يكون بعد تاريخ البداية");
+            return;
+        }
+
         await ExecuteAsync(async () =>
         {
             EditingLeave.TotalDays = (int)(EditingLeave.EndDate - EditingLeave.StartDate).TotalDays + 1;
             await _leaveService.RequestLeaveAsync(EditingLeave);
             IsEditing = false;
             EditingLeave = null;
-            await LoadAsync();
+            await LoadAsync(); // Auto-refresh immediately after save
         }, "تم تقديم طلب الإجازة بنجاح");
     }
 
@@ -224,7 +253,7 @@ public partial class LeavesViewModel : BaseViewModel
         {
             var approverId = _authService.CurrentUser?.Id ?? 0;
             await _leaveService.ApproveLeaveAsync(leaveId, approverId);
-            await LoadAsync();
+            await LoadAsync(); // Auto-refresh immediately after approval
         }, "تمت الموافقة على الإجازة");
     }
 
@@ -239,7 +268,7 @@ public partial class LeavesViewModel : BaseViewModel
         {
             var approverId = _authService.CurrentUser?.Id ?? 0;
             await _leaveService.RejectLeaveAsync(args.LeaveId, approverId, args.Reason);
-            await LoadAsync();
+            await LoadAsync(); // Auto-refresh immediately after rejection
         }, "تم رفض الإجازة");
     }
 
@@ -253,7 +282,7 @@ public partial class LeavesViewModel : BaseViewModel
         await ExecuteAsync(async () =>
         {
             await _leaveService.CancelLeaveAsync(leaveId);
-            await LoadAsync();
+            await LoadAsync(); // Auto-refresh immediately after cancellation
         }, "تم إلغاء الإجازة");
     }
 
